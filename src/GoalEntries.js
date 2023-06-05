@@ -28,12 +28,16 @@ export default function GoalEntries() {
         }
     }
 
+    function deleteGoal(index) {
+        setGoals(oldValues => oldValues.filter((_, i) => i !== index));
+    }
+
     return (
         <div>
             <ul>
                 {goals.map((goal, index) =>
                     <li key={index} onClick={(e) => handleClick(e, index)}>
-                        <GoalEntry goal={goal} />
+                        <GoalEntry goal={goal} deleteGoal={() => deleteGoal(index)} />
                     </li>    
                 )}
             </ul>
