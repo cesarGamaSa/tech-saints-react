@@ -1,5 +1,6 @@
 import './App.css';
 
+import GoalEntries from "./GoalEntries";
 import User from "./User";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className="App">
       <User user={user} />
+      <GoalEntries />
     </div>
   );
 }
