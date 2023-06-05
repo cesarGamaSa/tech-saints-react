@@ -16,11 +16,25 @@ export default function GoalEntries() {
         setGoals([...goals, g]);
     }
 
+    function handleClick(e, index) {
+        if(e.detail === 2) {
+            const newState = goals.map((g, i) => {
+                if (i === index) {
+                    return {...g, isCompleted: true};
+                }
+                return g;
+            });
+            setGoals(newState);
+        }
+    }
+
     return (
         <div>
             <ul>
                 {goals.map((goal, index) =>
-                    <li key={index}><GoalEntry goal={goal} /></li>    
+                    <li key={index} onClick={(e) => handleClick(e, index)}>
+                        <GoalEntry goal={goal} />
+                    </li>    
                 )}
             </ul>
             <AddGoal addNewGoal={addNewGoal} />
